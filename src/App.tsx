@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Button, Divider, Drawer, Grid, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Drawer, Grid, IconButton, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
@@ -19,6 +19,7 @@ type selljsonType = {
   no: string
   img_url: string
   vid_url: string
+  dl_url: string
   exp?: string
 }
 
@@ -86,6 +87,9 @@ function App() {
             <ListItemButton href='https://fikper.com/vzZ9snmkx5/register'>
               <Typography fontWeight={"bold"}>Fikper</Typography>
             </ListItemButton>
+            <ListItemButton href='https://fileland.io/premium2539.html'>
+              <Typography fontWeight={"bold"}>Fileland</Typography>
+            </ListItemButton>
             <ListItemButton onClick={() => {setSellScreen(!sellScreen); setMobileOpen(false)}}>
               <ListItemText primary={sellScreen ? "TOP" : "🔞🔞🔞"} />
             </ListItemButton>
@@ -116,7 +120,7 @@ function App() {
           sellData.map((data: selljsonType) => {
             return (
               <Grid item xs={12} key={data.no}>
-                <Seller title={data.no} img={data.img_url} vid={data.vid_url} exp={data.exp}/>
+                <Seller title={data.no} img={data.img_url} vid={data.vid_url} dl={data.dl_url} exp={data.exp}/>
               </Grid> 
             )
           })
