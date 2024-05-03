@@ -1,6 +1,7 @@
 import React from 'react';
-import { AppBar, Box, Drawer, Grid, IconButton, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, Grid, IconButton, List, ListItemButton, ListItemText, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
 
@@ -30,6 +31,15 @@ function App() {
   };
   const UA = window.matchMedia && window.matchMedia('(max-device-width: 640px)').matches;
   const [sellScreen , setSellScreen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   React.useEffect(
     () => {
@@ -58,6 +68,15 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Number
           </Typography>
+          <Box sx={{ flexGrow: 0 }} />
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            onClick={() => window.open("https://t.me/fffxffxfff")}
+          >
+            <TelegramIcon />
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -101,21 +120,22 @@ function App() {
         <img src="https://s11.flagcounter.com/count2/Bawc/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style={{display: "none"}}/>
       </a>
       { !sellScreen && (
-        <Grid container spacing={1}>
-          {
-            data.map((data: jsonType) => {
-              return (
-                <Grid item xs={UA ? 12 : 6} key={data.no}>
-                  <Contents title={data.no} img={data.img_url} dl={data.dl_url}/>
-                </Grid> 
-              );
-            })
-          }
-        </Grid>
+          <Grid container spacing={1}>
+            {
+              data.map((data: jsonType) => {
+                return (
+                  <Grid item xs={UA ? 12 : 6} key={data.no}>
+                    <Contents title={data.no} img={data.img_url} dl={data.dl_url}/>
+                  </Grid> 
+                );
+              })
+            }
+          </Grid>
         ) 
       }
       { sellScreen && (
         <Grid container spacing={1}>
+          <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, borderRadius: 8, backgroundColor: "#808080" }}>How to Buy</Button>
         {
           sellData.map((data: selljsonType) => {
             return (
@@ -128,6 +148,29 @@ function App() {
         </Grid>
         ) 
       }
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"How to add Fund"}
+        </DialogTitle>
+        <DialogContent>
+          <Stack direction={"column"} sx={{ m: 0 }} spacing={2}>
+            <Box>Register via the <a href='https://fileland.io/premium2539.html'>Link</a></Box>
+            <Box><img src={"./img/how001.PNG"} style={{width: '70%', height: '70%'}} loading="lazy"/></Box>
+            <Box><img src={"./img/how002.PNG"} style={{width: '70%', height: '70%'}} loading="lazy"/></Box>
+          </Stack>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>
+            OK
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 }

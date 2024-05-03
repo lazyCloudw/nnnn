@@ -7,7 +7,7 @@ type Props = {
   img: string,
   vid: string,
   dl: string,
-  exp?: string
+  exp?: string,
 };
 
 export default function Seller({title, img, vid, dl, exp}: Props) {
@@ -15,7 +15,7 @@ export default function Seller({title, img, vid, dl, exp}: Props) {
     <Paper sx={{width: 'auto', mb: -2}} elevation={2}>
       <Typography variant='h5' sx={{m: 2, pt: 1}} fontWeight={"bold"}>NVM{title}</Typography>
       <Box sx={{ width: '90%', height: '90%', m: 2}}>
-        <img src={img} style={{width: '90%', height: '90%'}} loading="lazy"/>  
+        <img src={img} style={{width: '90%', height: '90%'}} loading="lazy" onClick={() => window.open(img)}/>  
       </Box>
       <Typography sx={{m: 0, mb: 2, ml: 4}} fontSize={"20px"}>{exp}</Typography>
       {/* <Typography sx={{m: 0, pt: 0, ml: 4}} fontSize={"18px"}>LiteCoin(LTC): LP1SYW7Nt8Kv5pTaviXcYo4j7che1DCwxS</Typography>
@@ -26,8 +26,8 @@ export default function Seller({title, img, vid, dl, exp}: Props) {
         <Button variant='contained' sx={{ m: 2, borderRadius: 11, backgroundColor: "#2f4f4f" }} href={dl}>
           Buy
         </Button>
-        <Typography sx={{ mt: 2.5, ml: 2 }} fontSize={"20px"} fontWeight={"bold"}>password: Qv8RZf7K</Typography>
-        <Button variant='outlined' sx={{ m: 2, borderRadius: 11, ml: 20, visibility: vid ? "visible" : "hidden"}} href={vid}>
+        <Typography sx={{ mt: 2.5, ml: 2 }} fontSize={"16px"}>password: Qv8RZf7K</Typography>
+        <Button variant='outlined' sx={{ m: 2, borderRadius: 11, ml: 7, visibility: vid ? "visible" : "hidden"}} href={vid}>
           <VideoLibraryIcon sx={{ ml: -0.5 }}/>
         </Button>
       </Stack>
