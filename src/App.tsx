@@ -119,7 +119,7 @@ function App() {
       <a href="https://info.flagcounter.com/Bawc">
         <img src="https://s11.flagcounter.com/count2/Bawc/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style={{display: "none"}}/>
       </a>
-      <Button variant='contained' onClick={() => setSellScreen(true)} sx={{ m: 1, p: 2, mb: -2, borderRadius: 3, backgroundColor: "#483d8b", display: sellScreen ? "none" : "block" }}>👑VIP</Button>
+      <Button variant='contained' onClick={() => setSellScreen(true)} sx={{ m: 1, p: 2, mb: -2, fontWeight: "bold", borderRadius: 3, backgroundColor: "#483d8b", display: sellScreen ? "none" : "block" }}>👑VIP</Button>
       { !sellScreen && (
           <Grid container spacing={1}>
             {
@@ -136,7 +136,7 @@ function App() {
       }
       { sellScreen && (
         <Grid container spacing={1}>
-          <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, borderRadius: 8, backgroundColor: "#228b22" }}>How to Buy</Button>
+          <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, fontWeight: "bold", borderRadius: 8, backgroundColor: "#228b22" }}>How to Charge</Button>
         {
           sellData.map((data: selljsonType) => {
             return (
