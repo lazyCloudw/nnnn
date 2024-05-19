@@ -15,7 +15,7 @@ export default function Seller({title, img, vid, dl, exp}: Props) {
     <Paper sx={{width: 'auto', mb: -2}} elevation={2}>
       <Typography variant='h5' sx={{m: 2, pt: 1}} fontWeight={"bold"}>NVM{title}</Typography>
       <Box sx={{ width: '90%', height: '90%', m: 2}}>
-        <img src={img} style={{width: '90%', height: '90%'}} loading="lazy" onClick={() => window.open(img)}/>  
+        <img src={img} style={{width: '90%', height: '70%'}} loading="lazy" onClick={() => window.open(img)}/>  
       </Box>
       <Typography sx={{m: 0, mb: 2, ml: 4}} fontSize={"20px"}>{exp}</Typography>
       {/* <Typography sx={{m: 0, pt: 0, ml: 4}} fontSize={"18px"}>LiteCoin(LTC): LP1SYW7Nt8Kv5pTaviXcYo4j7che1DCwxS</Typography>
