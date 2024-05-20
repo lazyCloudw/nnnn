@@ -106,9 +106,12 @@ function App() {
             <ListItemButton href='https://fikper.com/vzZ9snmkx5/register'>
               <Typography fontWeight={"bold"}>Fikper</Typography>
             </ListItemButton>
-            {/* <ListItemButton href='https://fileland.io/premium2539.html'>
+            <ListItemButton href='https://fileland.io/premium2539.html'>
               <Typography fontWeight={"bold"}>Fileland</Typography>
-            </ListItemButton> */}
+            </ListItemButton>
+            <ListItemButton href='https://filesfly.cc/free71720.html'>
+              <Typography fontWeight={"bold"}>Filesfly</Typography>
+            </ListItemButton>
             <ListItemButton onClick={() => {setSellScreen(!sellScreen); setMobileOpen(false)}}>
               <ListItemText primary={sellScreen ? "🏠TOP" : "👑VIP"} />
             </ListItemButton>
