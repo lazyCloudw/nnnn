@@ -100,8 +100,8 @@ function App() {
             <ListItemButton href='https://katfile.com/free335061.html'>
               <Typography fontWeight={"bold"}>Katfile</Typography>
             </ListItemButton>
-            <ListItemButton href='https://www.emload.com/v2/aff/J4woYLqgpB'>
-              <Typography fontWeight={"bold"}>Emload</Typography>
+            <ListItemButton href='https://www.kshared.com/aff/2ejlWXgPL4'>
+              <Typography fontWeight={"bold"}>Kshared</Typography>
             </ListItemButton>
             <ListItemButton href='https://fikper.com/vzZ9snmkx5/register'>
               <Typography fontWeight={"bold"}>Fikper</Typography>
@@ -109,9 +109,9 @@ function App() {
             <ListItemButton href='https://fileland.io/premium2539.html'>
               <Typography fontWeight={"bold"}>Fileland</Typography>
             </ListItemButton>
-            <ListItemButton href='https://filesfly.cc/free71720.html'>
+            {/* <ListItemButton href='https://filesfly.cc/free71720.html'>
               <Typography fontWeight={"bold"}>Filesfly</Typography>
-            </ListItemButton>
+            </ListItemButton> */}
             <ListItemButton onClick={() => {setSellScreen(!sellScreen); setMobileOpen(false)}}>
               <ListItemText primary={sellScreen ? "🏠TOP" : "👑VIP"} />
             </ListItemButton>
