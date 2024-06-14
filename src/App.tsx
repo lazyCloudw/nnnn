@@ -73,6 +73,7 @@ function App() {
             size="large"
             edge="start"
             color="inherit"
+            disabled
             onClick={() => window.open("https://t.me/fffxffxfff")}
           >
             <TelegramIcon />
