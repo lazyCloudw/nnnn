@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
-import axios from "axios";
+// import axios from "axios";
 
 
 const drawerWidth = 150;
@@ -46,12 +46,12 @@ function App() {
   const [jsonSellData, setJsonSellData] = React.useState<selljsonType[]>([]);
 
   const fetchData = async () => {
-    const data = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/main/src/json/data.json').then((response) => response.json())
-    console.log("jsonData", data);
+    const data = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/develop/src/json/data.json').then((response) => response.json())
+    // console.log("jsonData", data);
     setJsonData(data);
 
-    const selldata = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/main/src/json/sellData.json').then((response) => response.json())
-    console.log("selldata", selldata);
+    const selldata = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/develop/src/json/sellData.json').then((response) => response.json())
+    // console.log("selldata", selldata);
     setJsonSellData(selldata);
   }
 
