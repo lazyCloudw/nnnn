@@ -4,6 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
+import axios from "axios";
 
 
 const drawerWidth = 150;
@@ -41,6 +42,19 @@ function App() {
     setOpen(false);
   };
 
+  const [jsonData, setJsonData] = React.useState<jsonType[]>([]);
+  const [jsonSellData, setJsonSellData] = React.useState<selljsonType[]>([]);
+
+  const fetchData = async () => {
+    const data = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/main/src/json/data.json').then((response) => response.json())
+    console.log("jsonData", data);
+    setJsonData(data);
+
+    const selldata = await fetch('https://raw.githubusercontent.com/lazyCloudw/nnnn/main/src/json/sellData.json').then((response) => response.json())
+    console.log("selldata", selldata);
+    setJsonSellData(selldata);
+  }
+
   React.useEffect(
     () => {
         let url = new URL(window.location.href);
@@ -48,6 +62,8 @@ function App() {
         if(params.get('mode') === "seller") {
           setSellScreen(true);
         }
+        
+        fetchData();
     },[]
   );
 
@@ -124,10 +140,10 @@ function App() {
         <img src="https://s11.flagcounter.com/count2/Bawc/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" style={{display: "none"}}/>
       </a>
       <Button variant='contained' onClick={() => setSellScreen(true)} sx={{ m: 1, p: 2, mb: -2, fontWeight: "bold", borderRadius: 3, backgroundColor: "#483d8b", display: sellScreen ? "none" : "block" }}>👑VIP</Button>
-      { !sellScreen && (
+      { !sellScreen && jsonData && (
           <Grid container spacing={1}>
             {
-              data.map((data: jsonType) => {
+              jsonData.map((data: jsonType) => {
                 return (
                   <Grid item xs={UA ? 12 : 6} key={data.no}>
                     <Contents title={data.no} img={data.img_url} dl={data.dl_url}/>
@@ -138,11 +154,11 @@ function App() {
           </Grid>
         ) 
       }
-      { sellScreen && (
+      { sellScreen && jsonSellData && (
         <Grid container spacing={1}>
           <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, fontWeight: "bold", borderRadius: 8, backgroundColor: "#228b22" }}>How to Charge</Button>
         {
-          sellData.map((data: selljsonType) => {
+          jsonSellData.map((data: selljsonType) => {
             return (
               <Grid item xs={12} key={data.no}>
                 <Seller title={data.no} img={data.img_url} vid={data.vid_url} dl={data.dl_url} exp={data.exp}/>
@@ -152,6 +168,11 @@ function App() {
         }
         </Grid>
         ) 
+      }
+      {
+        !jsonData && !jsonSellData && (
+          <Typography>no data</Typography>
+        )
       }
 
       <Dialog
