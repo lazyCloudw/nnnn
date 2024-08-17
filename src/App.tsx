@@ -11,6 +11,7 @@ const drawerWidth = 150;
 const data = require("./json/data.json");
 const sellData = require("./json/sellData.json");
 
+// eslint-disable-next-line
 type jsonType = {
   no: string
   img_url: string
