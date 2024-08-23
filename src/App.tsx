@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, Grid, IconButton, List, ListItemButton, ListItemText, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
-// import axios from "axios";
+import { Pagination } from '@mui/material';
 
 
 const drawerWidth = 150;
@@ -67,6 +67,19 @@ function App() {
         fetchData();
     },[]
   );
+
+  const [page, setPage] = useState(1);
+  const [sellPage, setSellPage] = useState(1);
+  const itemsPerPage = 10;
+
+  const paginatedData = jsonData.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+  const sellPaginatedData = jsonSellData.slice((sellPage - 1) * itemsPerPage, sellPage * itemsPerPage);
+  const pageChange = (event, value) => {
+    setPage(value);
+  };
+  const sellPageChange = (event, value) => {
+    setSellPage(value);
+  };
 
   return (
     <Box sx={{ flexGrow: 0 }}>
@@ -142,9 +155,10 @@ function App() {
       </a>
       <Button variant='contained' onClick={() => setSellScreen(true)} sx={{ m: 1, p: 2, mb: -2, fontWeight: "bold", borderRadius: 3, backgroundColor: "#483d8b", display: sellScreen ? "none" : "block" }}>👑VIP</Button>
       { !sellScreen && jsonData && (
-          <Grid container spacing={1}>
+        <Box sx={{ m: 0 }}>
+          <Grid container spacing={1} sx={{ mb: 4 }}>
             {
-              jsonData.map((data: jsonType) => {
+              paginatedData.map((data: jsonType) => {
                 return (
                   <Grid item xs={UA ? 12 : 6} key={data.no}>
                     <Contents title={data.no} img={data.img_url} dl={data.dl_url}/>
@@ -153,21 +167,50 @@ function App() {
               })
             }
           </Grid>
+          <Pagination
+            count={Math.ceil(jsonData.length / itemsPerPage)}
+            page={page}
+            onChange={pageChange}
+            color="primary"
+            sx={{ 
+              pt: 10, 
+              pb: 4,
+              position: 'absolute', 
+              left: '50%', 
+              transform: 'translate(-50%, -50%)'
+             }}
+          />
+        </Box>
         ) 
       }
       { sellScreen && jsonSellData && (
-        <Grid container spacing={1}>
-          <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, fontWeight: "bold", borderRadius: 8, backgroundColor: "#228b22" }}>How to Charge</Button>
-        {
-          jsonSellData.map((data: selljsonType) => {
-            return (
-              <Grid item xs={12} key={data.no}>
-                <Seller title={data.no} img={data.img_url} vid={data.vid_url} dl={data.dl_url} exp={data.exp}/>
-              </Grid> 
-            )
-          })
-        }
-        </Grid>
+        <Box sx={{ m: 0 }}>
+          <Grid container spacing={1} sx={{ mb: 4 }}>
+            <Button variant='contained' onClick={() => handleClickOpen()} sx={{ m: 2, p: 2, mb: -2, fontWeight: "bold", borderRadius: 8, backgroundColor: "#228b22" }}>How to Charge</Button>
+          {
+            sellPaginatedData.map((data: selljsonType) => {
+              return (
+                <Grid item xs={12} key={data.no}>
+                  <Seller title={data.no} img={data.img_url} vid={data.vid_url} dl={data.dl_url} exp={data.exp}/>
+                </Grid> 
+              )
+            })
+          }
+          </Grid>
+          <Pagination
+            count={Math.ceil(jsonSellData.length / itemsPerPage)}
+            page={sellPage}
+            onChange={sellPageChange}
+            color="primary"
+            sx={{ 
+              pt: 10, 
+              pb: 4,
+              position: 'absolute', 
+              left: '50%', 
+              transform: 'translate(-50%, -50%)'
+             }}
+          />
+        </Box>
         ) 
       }
       {
