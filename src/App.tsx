@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Drawer, Grid, IconButton, List, ListItemButton, ListItemText, Stack, Toolbar, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import TelegramIcon from '@mui/icons-material/Telegram';
+import AddHomeIcon from '@mui/icons-material/AddHome';
 import Contents from './component/contents.tsx';
 import Seller from "./component/seller.tsx"
 import { Pagination } from '@mui/material';
@@ -105,10 +106,9 @@ function App() {
             size="large"
             edge="start"
             color="inherit"
-            disabled
-            onClick={() => window.open("https://t.me/fffxffxfff")}
+            onClick={() => window.open("https://rentry.co/7yyv7mh9")}
           >
-            <TelegramIcon />
+            <AddHomeIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
