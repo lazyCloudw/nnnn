@@ -106,9 +106,9 @@ function App() {
             size="large"
             edge="start"
             color="inherit"
-            onClick={() => window.open("https://rentry.co/7yyv7mh9")}
+            onClick={() => window.open("https://1shortlink.com/note/dYWLD6AK")}
           >
-            <AddHomeIcon />
+            <TelegramIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
